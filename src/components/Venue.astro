@@ -1,0 +1,5 @@
+---
+const address = 'Calle 44 A # 70-32';
+const mapQuery = encodeURIComponent(`Centro de eventos San Joaquín sede la 70, ${address}`);
+---
+<section class="venue" aria-labelledby="venue-title"><div class="venue-art" aria-hidden="true"><span class="circle"></span><span class="line line-a"></span><span class="line line-b"></span><span class="star">✦</span></div><div class="venue-copy"><p class="label">02 / El encuentro</p><h2 id="venue-title">Centro de eventos<br /><em>San Joaquín</em></h2><p class="venue-name">Sede la 70</p><address>{address}</address><a class="map" href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noreferrer">Ver ubicación <span aria-hidden="true">↗</span></a></div></section>
