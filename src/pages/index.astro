@@ -32,8 +32,8 @@ const mapQuery = encodeURIComponent(`${venue}, ${address}`);
       </section>
 
       <section class="pending" aria-labelledby="date-title">
-        <p class="label">Guarda este momento</p><h2 id="date-title">La fecha y la hora<br /><em>están por confirmar.</em></h2>
-        <span class="pending-mark" data-novi-placeholder="event.date">Fecha por confirmar</span><span class="pending-mark" data-novi-placeholder="event.time">Hora por confirmar</span>
+        <p class="label">Guarda este momento</p><h2 id="date-title">Sábado 19<br /><em>diciembre 2026</em></h2>
+        <span class="event-time">7:00 p. m.</span><div class="countdown" data-countdown data-target="2026-12-19T19:00:00-05:00" role="timer" aria-live="off" aria-label="Cuenta regresiva para los XV años"><div><b data-days aria-label="días">00</b><span>días</span></div><i aria-hidden="true"></i><div><b data-hours aria-label="horas">00</b><span>horas</span></div><i aria-hidden="true"></i><div><b data-minutes aria-label="minutos">00</b><span>minutos</span></div><i aria-hidden="true"></i><div><b data-seconds aria-label="segundos">00</b><span>segundos</span></div></div>
       </section>
 
       <section class="venue" aria-labelledby="venue-title">
@@ -46,6 +46,11 @@ const mapQuery = encodeURIComponent(`${venue}, ${address}`);
       <section class="rsvp-pending" aria-labelledby="rsvp-title"><p class="label">Confirma tu asistencia</p><h2 id="rsvp-title">¿Nos<br /><em>acompañas?</em></h2><p data-novi-placeholder="event.rsvp">Medio y fecha de confirmación por confirmar.</p><button class="whatsapp-button" type="button" disabled aria-disabled="true">Confirmar por WhatsApp <span aria-hidden="true">↗</span></button></section>
     </main>
     <footer>Valeria Sepúlveda Garcés <span>✦</span> Mis XV</footer>
+    <script is:inline>
+      const countdown = document.querySelector('[data-countdown]');
+      const tick = () => { const diff = Math.max(0, new Date(countdown.dataset.target).getTime() - Date.now()); const values = [Math.floor(diff / 86400000), Math.floor(diff / 3600000) % 24, Math.floor(diff / 60000) % 60, Math.floor(diff / 1000) % 60]; ['days','hours','minutes','seconds'].forEach((key, i) => { const el = document.querySelector(`[data-${key}]`); if (el) el.textContent = String(values[i]).padStart(2, '0'); }); };
+      tick(); setInterval(tick, 1000);
+    </script>
   </body>
 </html>
 
@@ -69,4 +74,7 @@ const mapQuery = encodeURIComponent(`${venue}, ${address}`);
 .hero-copy:before,.hero-copy:after{display:none}.gold-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1}.gold-particles i{position:absolute;width:3px;height:3px;border-radius:50%;background:#f4d98d;box-shadow:0 0 8px 2px rgba(197,162,90,.75);opacity:.35;animation:particle-float 8s ease-in-out infinite}.gold-particles i:nth-child(1){left:12%;top:25%;animation-delay:-1s}.gold-particles i:nth-child(2){left:23%;top:65%;animation-delay:-4s}.gold-particles i:nth-child(3){left:36%;top:18%;width:2px;height:2px;animation-delay:-6s}.gold-particles i:nth-child(4){left:48%;top:76%;animation-delay:-2s}.gold-particles i:nth-child(5){left:61%;top:26%;width:2px;height:2px;animation-delay:-5s}.gold-particles i:nth-child(6){left:76%;top:57%;animation-delay:-3s}.gold-particles i:nth-child(7){left:87%;top:20%;width:2px;height:2px;animation-delay:-7s}.gold-particles i:nth-child(8){left:9%;top:76%;width:2px;height:2px;animation-delay:-2s}.gold-particles i:nth-child(9){left:30%;top:43%;animation-delay:-6s}.gold-particles i:nth-child(10){left:70%;top:73%;width:2px;height:2px;animation-delay:-1s}.gold-particles i:nth-child(11){left:82%;top:39%;animation-delay:-4s}.gold-particles i:nth-child(12){left:55%;top:12%;width:2px;height:2px;animation-delay:-7s}@keyframes particle-float{0%,100%{transform:translate3d(0,8px,0) scale(.7);opacity:.18}50%{transform:translate3d(9px,-14px,0) scale(1.45);opacity:.75}}@media(prefers-reduced-motion:reduce){.gold-particles i{animation:none;opacity:.35}}
 .topline{justify-content:center;text-align:center}.invitation{text-align:center}.invitation .copy{margin-left:auto;margin-right:auto}.invitation .signature{text-align:center}
 .topline{padding-top:1.2rem}
+.event-time{display:block;margin-top:2rem;color:#8d6a29;font:1.4rem 'DM Serif Display',Georgia,serif}.countdown{display:flex;justify-content:center;gap:clamp(1rem,4vw,3rem);margin-top:3rem}.countdown>div{display:flex;flex-direction:column;align-items:center;min-width:4rem}.countdown b{color:#8d6a29;font:400 clamp(2rem,5vw,3.5rem)/1 'DM Serif Display',Georgia,serif}.countdown span{font:.62rem 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase;margin-top:.4rem}
+.countdown{max-width:38rem;margin-left:auto;margin-right:auto;padding:1.5rem 1rem;border-top:1px solid rgba(197,162,90,.35);border-bottom:1px solid rgba(197,162,90,.35);gap:clamp(.7rem,3vw,2rem)}.countdown>div{min-width:clamp(3.4rem,8vw,5.5rem)}.countdown b{font-size:clamp(2.2rem,5vw,4rem)}.countdown i{width:1px;height:2.8rem;background:rgba(197,162,90,.35);align-self:center}@media(max-width:480px){.countdown{padding-inline:.2rem;gap:.35rem}.countdown>div{min-width:3.4rem}.countdown i{height:2.2rem}}
+.pending{text-align:center}.pending .label{margin-bottom:2.6rem}.pending h2{margin-inline:auto;font-size:clamp(4rem,10vw,9rem);line-height:.82}.pending h2 em{display:block;color:#8d6a29;font-size:.72em;margin-top:.18em}.event-time{position:relative;margin:2.4rem auto 0;padding-top:1.2rem;width:min(100%,16rem);font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:.08em}.event-time:before{content:'';position:absolute;top:0;left:20%;right:20%;height:1px;background:var(--gold)}.countdown{margin-top:3rem}
 </style>
